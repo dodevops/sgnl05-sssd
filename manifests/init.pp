@@ -164,7 +164,7 @@ class sssd (
       $before = undef
     }
 
-    ensure_resource('service', $service_dependencies,
+    stdlib::ensure_resource('service', $service_dependencies,
       {
         ensure     => running,
         hasstatus  => true,
@@ -176,7 +176,7 @@ class sssd (
   }
 
   if $mkhomedir and $manage_oddjobd {
-    ensure_resource('service', 'oddjobd',
+    stdlib::ensure_resource('service', 'oddjobd',
       {
         ensure     => $service_ensure,
         enable     => $service_enable,
@@ -312,7 +312,7 @@ class sssd (
     default  => $sssd::service_ensure,
   }
 
-  ensure_resource('service', $sssd_service,
+  stdlib::ensure_resource('service', $sssd_service,
     {
       ensure     => $service_ensure_real,
       enable     => $service_enable,
